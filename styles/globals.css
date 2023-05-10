@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* Remove Firefox scrollbar styles */
+/* Rounded scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff; /* light mode track color */
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #ececf1; /* light mode thumb color */
+  border-radius: 10px;
+}
+
+/* Dark mode styles */
+.dark ::-webkit-scrollbar-track {
+  background-color: #343541; /* dark mode track color */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #494b58; /* dark mode thumb color */
+}
+
+.usermessagewaiting {
+  background: linear-gradient(to left, #ececf1, #ffffff, #ececf1);
+  background-size: 200% 200%;
+  background-position: -100% 0;
+  animation: loading-gradient 2s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-name: loading-gradient;
+}
+
+/* .dark .usermessagewaiting {
+  background: linear-gradient(to left, #434453, #343541, #434453)!important;
+} */
+
+.dark .usermessagewaiting {
+  background: linear-gradient(to left, #0f4b7a, #0a3b5c, #0f4b7a) !important;
+  background-size: 200% 200%;
+  background-position: -100% 0;
+  animation: loading-gradient 2s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-name: loading-gradient;
+}
+
+@keyframes loading-gradient {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+pre:has(div.codeblock) {
+  padding: 0;
+}
+
+@layer components {
+  .hljs {
+    @apply p-0;
+  }
+
+  .infoText {
+    @apply p-4 bg-gray-800 rounded-lg max-w-[300px];
+  }
+
+  .chatRow {
+    @apply rounded-lg px-3 py-3 text-sm flex items-center space-x-2 hover:bg-gray-700/70 cursor-pointer text-gray-300 transition-all duration-200 ease-out;
+  }
+
+  .select-container .select__control {
+    @apply bg-white dark:bg-gray-800 border-2 border-neutral-300 dark:border-gray-500/10 hover:border-neutral-400 dark:hover:border-neutral-500;
+  }
+
+  .select-container .select__control--is-focused {
+    @apply border-neutral-500 hover:border-neutral-500 dark:border-neutral-400 dark:hover:border-neutral-400 shadow-none;
+  }
+
+  .select-container .select__menu {
+    @apply bg-neutral-100 dark:bg-gray-800 border-2 border-neutral-300 dark:border-[#434654];
+  }
+  /* Convert above to normal css */
+
+  .select-container .select__option {
+    @apply text-neutral-600 dark:text-neutral-200 bg-neutral-100 hover:bg-neutral-200 dark:bg-gray-800 dark:hover:bg-neutral-800;
+  }
+  /* .select-container .select__option--is-focused {
+    @apply bg-neutral-200 dark:bg-neutral-800;
+  } */
+
+  .select-container .select__indicator-separator {
+    @apply bg-neutral-400;
+  }
+
+  .select-container .select__input-container,
+  .select-container .select__placeholder,
+  .select-container .select__single-value {
+    @apply text-neutral-600 dark:text-neutral-200;
+  }
+
+  textarea {
+    @apply border-none overflow-auto outline-none resize-none;
+  }
+
+  .scroll-convo {
+    @apply hidden;
+  }
+}
