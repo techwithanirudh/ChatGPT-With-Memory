@@ -1,4 +1,7 @@
 # AnirudhGPT
+
+## Caution: Avoid running this project on Replit as it can lead to significant issues, potentially resulting in the suspension of your Replit account. Modifying the project without providing proper credits may also expose you to legal consequences, including potential arrest under DMCA laws.
+
 ## Introduction
 AnirudhGPT is an open-source chatbot powered by ChatGPT for Real Tech. It allows individuals and businesses to leverage the power of artificial intelligence for their communication channels. This README file provides an overview of AnirudhGPT, including its features, licensing, and guidelines for usage.
 
