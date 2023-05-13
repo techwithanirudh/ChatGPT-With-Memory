@@ -65,60 +65,9 @@ const queryApi = async (prompt: string, chatId: string, session: any, model: str
       });
 
       var response = completion.data.choices[0].message?.content;
-      if (response?.includes("start-trigger")) {
-        // <start-trigger>{
-        //   path: "/todos/{username}"
-        //   method: "POST"
-        //   body: {
-        //   ...body	
-        //   },
-        //   username: "User"
-        // }<end-trigger>
+      return response;
 
-        console.log("Triggered ".repeat(10))
-        var action: any = response?.split("<start-trigger>")[1].split("<end-trigger>")[0];
-        var action: any = JSON.parse(action);
-
-        console.log(action)
-        console.log("Action ".repeat(2))
-
-        var res: any = await fetch(`${action!.website}${action!.path}`, {
-          method: action!.method,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(action!.body),
-        });
-
-        var info = await res.text();
-        var status = res.status;
-        // Status code get  
-        info = response + `\nYou got a new response from the SYSTEM API! The response is: ${status} ${info}`;
-
-        var nextCompletion = await openai.createChatCompletion({
-          // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
-          model: model,
-          messages: message_data.concat({
-            role: "system",
-            content: info,
-          }),
-          temperature: userSettings?.temperature || 0.9,
-        }, {
-          timeout: 5 * 60 * 1000,
-        });
-
-        var nextResponse = nextCompletion.data.choices[0].message?.content;
-
-        console.log(nextResponse)
-        console.log("Next Response ".repeat(2))
-
-        return nextResponse;
-        // return "ChatGPT is under maintenance. Please try again later."
-      } else {
-        return response;
-
-        // return "ChatGPT is under maintenance. Please try again later."
-      }
+      // return "ChatGPT is under maintenance. Please try again later."
     } catch (e: any) {
       console.log(e);
       if (!e || !e.response) return "Something went wrong! Please try again by typing continue.";
