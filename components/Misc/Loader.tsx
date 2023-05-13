@@ -16,7 +16,7 @@ export default function Loader({ error }: Props) {
 			<a className="animate-spin rounded-full h-32 w-32 border-b-2 border-gray-900 dark:border-gray-100"></a>
 			{!error ? (
 				<div className="text-center text-2xl text-black/50 dark:text-white/50">
-					Built by{" "}
+					Shamelessly copied from{" "}
 					<a
 						href="https://replit.com/@techwithanirudh"
 						className="text-black/100 dark:text-white/100 hover:text-black/70 dark:hover:text-white/70"
